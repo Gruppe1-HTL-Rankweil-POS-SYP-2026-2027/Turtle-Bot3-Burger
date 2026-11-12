@@ -1,11 +1,12 @@
 [Unit]
 Description=Update the Turtle Bot
-After=network.target network.online
+After=network.target network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
 User=root
-ExecStart=/home/robot1/Turtle-Bot3-Burger/setup/tools/update.bash
+ExecStart=/home/robot1/Turtle-Bot3-Burger/setup/tools/update.sh
 Restart=on-failure
 
 [Install]

@@ -1,11 +1,12 @@
 [Unit]
 Description=Starts the Turtle Bot
-After=network.target network.online turtle_bot_pull.service
+After=network.target network.online network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
 User=robot1
-ExecStart=/home/robot1/Turtle-Bot3-Burger/setup/tools/start.bash
+ExecStart=/home/robot1/Turtle-Bot3-Burger/setup/tools/start.sh
 Restart=on-failure
 
 [Install]
