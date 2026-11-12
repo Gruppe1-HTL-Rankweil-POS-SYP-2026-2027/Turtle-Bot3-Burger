@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #--- update packet list and upgrade packages
 sudo apt update
 sudo apt upgrade -y

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 : "${WIFI_PWD:?WIFI_PWD is required}"
 : "${WIFI_SSID:?WIFI_SSID is required}"
 
@@ -29,7 +30,7 @@ rviz2 --help
 
 # ---------- pull github repo
 
-cd ~
+cd ~/Turtle-Bot3-Burger
 git pull
 
 #--- make tools executable
@@ -51,7 +52,22 @@ sudo systemctl enable turtle_bot_start.service
 sudo systemctl enable turtle_bot_update.service
 
 #---- connect to wifi
-nmcli device wifi connect "$WIFI_SSID" password "$WIFI_PWD"
+
+sudo tee /etc/netplan/50-cloud-init.yaml >/dev/null <<EOF
+network:
+  version: 2
+  wifis:
+    wlan0:
+      dhcp4: true
+      optional: true
+      access-points:
+        "$WIFI_SSID":
+          password: "$WIFI_PWD"
+EOF
+
+sudo chmod 600 /etc/netplan/50-cloud-init.yaml
+sudo netplan apply
+
 
 sleep 10
-sudo restart
+sudo reboot
