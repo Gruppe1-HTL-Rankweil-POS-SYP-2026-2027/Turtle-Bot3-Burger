@@ -1,0 +1,12 @@
+[Unit]
+Description=Pulls updates from repo
+After=network.target network.online
+
+[Service]
+Type=simple
+User=robot1
+ExecStart=/home/robot1/Turtle-Bot3-Burger/setup/tools/pull.bash
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

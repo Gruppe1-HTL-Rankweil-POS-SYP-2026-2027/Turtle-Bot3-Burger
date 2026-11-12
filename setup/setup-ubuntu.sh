@@ -1,5 +1,8 @@
+#--- update packet list and upgrade packages
 sudo apt update
 sudo apt upgrade -y
+
+# --------- ros2 jazzy install
 sudo apt install -y curl gnupg lsb-release software-properties-common locales mesa-utils
 
 sudo locale-gen en_US en_US.UTF-8
@@ -20,5 +23,3 @@ source ~/.bashrc
 printenv ROS_DISTRO
 ros2 --help
 rviz2 --help
-
-
