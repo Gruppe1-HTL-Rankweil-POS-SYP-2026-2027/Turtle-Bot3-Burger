@@ -41,9 +41,9 @@ sudo chmod +x update.sh
 
 #----- setup services
 cd ~/Turtle-Bot3-Burger/setup/services
-cp turtle_bot_pull.service /etc/systemd/system/
-cp turtle_bot_start.service /etc/systemd/system/
-cp turtle_bot_update.service /etc/systemd/system/
+sudo cp turtle_bot_pull.service /etc/systemd/system/
+sudo cp turtle_bot_start.service /etc/systemd/system/
+sudo cp turtle_bot_update.service /etc/systemd/system/
 
 
 sudo systemctl daemon-reload
